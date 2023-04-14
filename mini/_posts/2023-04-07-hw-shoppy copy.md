@@ -1,19 +1,20 @@
 ---
 layout: post
-title: Mini Content
+title: HW SHOPPY
 description: >
-  Howdy! This is an example blog post that shows several types of HTML content supported in this theme.
+  React 와 tailwind 를 사용하여 쇼핑몰 앱 만들기
 sitemap: false
 hide_last_modified: true
 ---
 
-Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. _Aenean eu leo quam._ Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
+React와 tailwindcss 를 활용하여 쇼핑몰 앱을 만들기록 하였다.
+기간은 총 2주로 잡고 해당 프로젝트를 진행하고자 한다. <a href="#">dis parturient montes</a>, nascetur ridiculus mus. _Aenean eu leo quam._ Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
 
 > Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.
 
 Etiam porta **sem malesuada magna** mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
 
-## Inline HTML elements
+## HW Shoppy 프로젝트 계획
 
 HTML defines a long list of available inline tags, a complete list of which can be found on the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
 
