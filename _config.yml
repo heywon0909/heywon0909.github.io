@@ -48,6 +48,8 @@ author:
 
 # Add links to the sidebar.
 menu:
+  - title: "토이프로젝트"
+    url: /mini-project/
   - title: Example
     url: /example/
   - title: Documentation
