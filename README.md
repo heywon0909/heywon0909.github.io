@@ -1,20 +1,15 @@
-# Hydejack Starter Kit
+# heywon0909의 깃허브 블로그 🙆‍
 
-A quicker, cleaner way to get started blogging with [Hydejack](https://hydejack.com/).
+공부한 학습 내용을 정리한 블로그입니다 
+<br>
+<br>
 
-## Quick Start
-### Running locally
-1. Clone repository (git users), or [download] and unzip.
-2. Open terminal, `cd` into root directory (where `_config.yml` is located)
-3. Run `bundle install` [^1]
-4. Run `bundle exec jekyll serve`
-5. Open <http://localhost:4000/hydejack-starter-kit/>
+## 블로그 운영 목표 ✔
+1. 일주일에 최대 하나 올리기
+2. [토이프로젝트] - 진행하면서 꾸준히 작성하기 
 
-## What's next?
-* Open files and read the comments
-* Read the [docs](https://hydejack.com/docs/)
-* Buy the [PRO version](https://hydejack.com/download/) to get the project and resume layout, newsletter subscription box, custom forms, and more.
 
-[^1]: Requires Bundler. Install with `gem install bundler`.
+## 블로그 목차
+1. 토이프로젝트 - mini
+2. cs 스터디 - cs 
 
-[download]: https://github.com/hydecorp/hydejack-starter-kit/archive/master.zip
