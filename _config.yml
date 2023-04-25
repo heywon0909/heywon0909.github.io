@@ -48,6 +48,8 @@ author:
 
 # Add links to the sidebar.
 menu:
+  - title: CsStudy
+    url: /cs/
   - title: Mini
     url: /mini/
   - title: Example
