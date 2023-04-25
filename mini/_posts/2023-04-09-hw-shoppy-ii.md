@@ -1,6 +1,6 @@
 ---
 layout: post
-title: HW-SHPPOY [struggle]
+title: HW-shoppy api 모듈
 image:
   path: /assets/img/mini/hw-shoppy/proceduralprogramming.png
 description: >
@@ -10,8 +10,6 @@ sitemap: false
 
 [hw-shoppy] 프로젝트를 진행하면서 api 모듈을 어떻게 분리하고 작성할지에 대해 고민해보았다.✍
 {:.lead}
-
-[Modernized](#linking-in-style) [design](#whats-in-the-cards), [big headlines](#ready-for-the-big-screen), big new features: [Built-In Search](#built-in-search), [Sticky Table of Contents](#sticky-table-of-contents), and [Auto-Hiding Navbar](#auto-hiding-navbar). That [and more](#and-much-more) is Hydejack 9.
 
 - api 기능별 함수로 분리하여 정의하기
   {:toc .large-only}
@@ -37,59 +35,179 @@ firebase로 api 호출을 하다보니 firebase database를 반복적으로 조�
 
 데이터만을 조회해오는 class 인 ShopClient 와 ShopClient에서 조회해온 데이터를 포맷팅하는 Shop class로 나눠서 구현하였다.
 
-## What's in the Cards?
+## firebase 사용하기
 
-Hydejack 9 now lets you use content cards for both projects and posts.
-The cards have been redesigned with a new hover style and drop shadows and they retain their unique transition-to-next-page animations, which now also work on the `blog` layout. The new `grid` layout lets you do that.
+> [파이어베이스는](https://blog.wishket.com/%ED%8C%8C%EC%9D%B4%EC%96%B4%EB%B2%A0%EC%9D%B4%EC%8A%A4firebase%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80-%ED%8C%8C%EC%9D%B4%EC%96%B4%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EC%8B%AC%EC%B8%B5-%ED%83%90/)는 "앱을 개발하고 개선하고, 키워갈 수 있는" 도구 모음 이며 이러한 도구가 없다면 개발자들은 일반적으로 서비스의 상당 부분을 직접 만들어내야만 한다.
 
-Good images are key to making the most out of content cards. For that reason, a [chapter on images](../../docs/basics.md#adding-images) has been added to the documentation.
+1. firebase 가져오는 js
+2. firebase 데이터 읽고 쓰는 api 모듈
+3. api 모듈에서 가져온 데이터 포맷팅
 
-## Built-In Search
+총 3가지 파일로 나눠보았다.
 
-Hydejack now has Built-In Search. It even works offline. I've been prototyping many approaches and eventually settled on a fully client-side, off-the-main thread solution that perfectly fits the use case of personal sites and shows surprisingly good results[^2].
+### firebase.js
 
-The new search UI is custom made for Hydejack and shows beautiful previews of your posts and pages, right on top of your regular content.
+```js
+// Javascript code with syntax highlighting.
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-Together with the Auto-Hiding Navbar, your entire content library is now only a couple of keystrokes away.
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DB_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MS_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
+};
 
-## Auto-Hiding Navbar
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+```
 
-A navbar that's there when you need it, and disappears when you don't. Simple as that.
+firebase config에 필요한 값 설정들은 env 파일을 만들어 환경변수로 관리하였다.
 
-## Sticky Table of Contents
+### firebase 저장소 사용하기
 
-Already a staple on so many sites on the web, this pattern is now also available in Hydejack.
-What's unique about it is that it simply picks up the table of contents already created by kramdown's `{:toc}` tag and transparently upgrades it to a fully dynamic version.
+나의 firebase 저장소의 구성은 이러하다
 
-## …and much more
+| 컬렉션            | 문서     | 컬렉션     | 문서          |
+| ----------------- | -------- | ---------- | ------------- |
+| shop              | list     | items      | 쇼핑아이템 id |
+| buy(산 아이템)    | 유저 uid | 유저데이터 |
+| buying(장바구니)  | 유저 uid | 유저데이터 |
+| interest(찜 목록) | 유저 uid | 유저데이터 |
 
-Other noteworthy changes include:
+<br><br>
+공통적으로 쓰는 기능은
 
-- Support for Jekyll 4
-- Choice between MathJax and KaTeX for math rendering
-- Use of `jekyll-include-cache` for drastically improved page building speeds
-- New variables configuration file — adjust content width, sidebar width, font size, etc...
-- ...and the option to disable grouping projects by year.
+1. 데이터 추가
+2. 데이터 가져오기
 
-Read the the [CHANGELOG](../../CHANGELOG.md){:.heading.flip-title} for the full scope of features and improvements made in Hydejack 9.
-Maybe just glance at it to confirm that it is indeed a pretty long list.
+이정도로 추려볼 수 있었다.
 
-## Even More to Come
+- 문서
 
-New features for 9.1 are already lined up. Code block headers and code line highlights for even better technical blogging, as well as download buttons on the resume page for PDF, vCard, and Resume JSON are just around the corner.
+```js
+doc(db, 컬렉션, 문서, 추가할 데이터);
+```
 
-## Get It Now
+- 문서 쓰기
 
-The Free Version of Hydejack is now availabe on [RubyGems](https://rubygems.org/gems/jekyll-theme-hydejack)
-and for the first time also on [GitHub Packages](https://github.com/hydecorp/hydejack/packages).
-The source code is available on [GitHub](https://github.com/hydecorp/hydejack) as always.
+```js
+await setDoc(doc(db, 컬렉션, 쓸 문서));
+```
 
-The PRO Version is scheduled to release on July 7th on Gumroad. Pre-Orders are open now:
+- 문서 조회
 
-<div class="gumroad-product-embed" data-gumroad-product-id="nuOluY"><a href="https://gumroad.com/l/nuOluY">Loading…</a></div>
+```js
+await getDoc(doc(db, 컬렉션, 가져올 문서));
+```
 
-[^1]: If you are a fan of the old two-column layout, or don't like modern design tropes such as mega headlines, Hydejack lets you revert these changes on a case-by-case basis via configuration options.
-[^2]:
-    Search was mainly tested for English and German. Please let me know about issues in other languages.
-    While I've tried to find a multi-language solution, most showed drastically worse results for the English base case.
-    If you're technically inclined, you can adopt the code located in `_includes/js/search-worker.js` to your needs.
+공통적으로 쓰는 3가지를 추려 ShopClient class에 private method로 만들어서 내부에서만 호출가능하게 만들었다.
+
+```js
+  // 데이터 쓰기
+  #setFirebaseDoc(name, user, params) {
+    return setDoc(doc(db, name, user?.uid), params);
+  }
+  // 문서 조회
+  #getFirebaseDoc(name, user) {
+    return doc(db, name, user.uid);
+  }
+  // buy 컬렉션에 찾는 유저의 데이터가 있는 지
+  async #initBuyCollection(user) {
+    return await getDoc(this.#getFirebaseDoc("buy", user));
+  }
+
+```
+
+#### firebase api 모듈
+
+이런식으로 shopClient로 변경하였다.
+
+```js
+export default class ShopClient {
+  // private 변수
+  #user = null;
+  #auth = getAuth();
+  constructor() {
+    // class 생성시 item목록 collection 생성
+    this.itemsCollection = collection(db, "shop", "list", "items");
+  }
+  #문서조회,데이터쓰기
+  유저 로그인,로그아웃
+  찜하기 추가,삭제
+  장바구니 추가,삭제
+}
+```
+
+해당 firebase에서 가져온 데이터들을 Shop class에서 포맷팅해서 보내주도록 하였다.
+
+```js
+export default class Shop {
+  // apiClient로 ShopClient를 받아와서 생성
+  constructor(apiClient) {
+    this.apiClient = apiClient;
+  }
+  // 상품 조회 (이런식으로 포맷팅...)
+  async getItem(id) {
+    return this.apiClient.getItem().then((result) => {
+      if (id) {
+        return result.filter((item) => item.id === id)?.[0];
+      }
+      return result;
+    });
+  }....
+}
+```
+
+## Context 로 전역에서 이용하게끔
+
+해당 Shop(ShopClient를 가진) 클래스를 한번 호출하면 프로퍼티를 호출할 수 있도록 하기위해 ShopContext 를 만들어주었다.
+
+> [context api](https://ko.legacy.reactjs.org/docs/context.html)는 react에서 기본적으로 제공되는 툴로 context를 이용하면 단계마다 일일이 props를 넘겨주지 않고도 컴포넌트 트리 전체에 데이터를 제공할 수 있다.
+
+- 장점
+
+* 매우 간단
+* 추가 패키지 없어도 됨
+
+2.  단점
+
+- 비지니스 로직에 따라 Provider를 계속 생성..
+- 코드가 매우 복잡해질 수 있음
+
+```js
+// context
+export function ShopApiProvider({ children }) {
+  const client = new ShopClient();
+  const shop = new Shop(client);
+
+  return (
+    <ShopContext.Provider value={{ shop }}>{children}</ShopContext.Provider>
+  );
+}
+
+export function useShopApi() {
+  return useContext(ShopContext);
+}
+```
+
+쓸 때 useQuery callback 에서 shop을 가져와서 프로퍼티를 쓰도록 만들어주었다.
+
+```js
+// useQuery
+const { isLoading, data: items } = useQuery(["myInterest"], () => {
+  const stored = JSON.parse(sessionStorage.getItem("shoppy"));
+  return shop.getInterest(stored);
+});
+```
