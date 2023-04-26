@@ -25,7 +25,7 @@ hide_last_modified: false
 3. 레벨 : 트리에서 같은 줄
 4. 프로퍼티 : 균형 잡힌 정도
 
-![400x200](/assets/image/cs/cbt.jpg/400x200 "균형/불균형 이진트리")
+![400x200](/assets/img/cs/cbt.jpg/400x200 "균형/불균형 이진트리")
 
 ### 이진 탐색 트리
 
