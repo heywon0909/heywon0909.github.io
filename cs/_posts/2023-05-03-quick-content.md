@@ -44,6 +44,72 @@ hide_last_modified: false
 
 분할이 끝나면 피벗 왼쪽에 값들은 피벗보다 작고, 피벗 오른쪽에 있는 값들은 피벗보다 크게 된다❗(피벗 자체는 배열 내에서 알맞은 위치에 있는 것이다.)
 
+### 퀵정렬 만들어보기
+
+책에 나와있는 퀵정렬 클래스와 메서드를 javascript 함수로 바꿔 보았다.
+
+```js
+function solution(arr) {
+  let n = arr.length;
+  // 분할메서드
+  function partition(left_pointer, right_pointer) {
+    // 피벗 인덱스
+    let pivot_index = right_pointer;
+    // 피벗 값
+    let pivot = arr[pivot_index];
+    // 오른쪽 포인터
+    right_pointer -= 1;
+
+    while (true) {
+      // 피벗보다 크거나 같은 값을 가리킬때까지 왼쪽 포인터 이동
+      // 왼쪽 포인터가 배열의 길이를 벗어나면 while문 벗어남
+      while (arr[left_pointer] < pivot) {
+        left_pointer += 1;
+      }
+      // 피벗보다 작거나 같은 값을 가리킬때까지 오른쪽 포인터 이동
+      // 오른쪽 포인터가 배열의 길이를 벗어나면 while문 벗어남
+      while (arr[right_pointer] > pivot) {
+        right_pointer -= 1;
+      }
+      // 왼쪽 포인터가 오른쪽 포인터를 넘거나 도달했으면 while 문 끝내고 교환 시작
+      if (left_pointer >= right_pointer) {
+        break;
+      } else {
+        // 그렇지 않으면 왼쪽 포인터와 오른쪽 포인터가 가리키고 있는 값 계속 교환
+        [arr[left_pointer], arr[right_pointer]] = [
+          arr[right_pointer],
+          arr[left_pointer],
+        ];
+        // 교환이 끝난 후 왼쪽 포인터 이동 -> 다시 while 문 맨앞으로 가서 비교
+        left_pointer += 1;
+      }
+    }
+
+    // 최종적으로 while 문이 끝나면 왼쪽 포인터와 피벗의 값을 교환한다.
+    [arr[left_pointer], arr[pivot_index]] = [
+      arr[pivot_index],
+      arr[left_pointer],
+    ];
+    return left_pointer;
+  }
+  // 재귀 메서드로 분할메서드 재 호출
+  function DFS(start, last) {
+    if (last - start <= 0) return;
+    else {
+      // 한번의 분할이 끝나면 평균적으로 피벗은 배열의 한가운데에 위치해있으므로 피벗 왼쪽 하위 배열과 피벗 오른쪽 하위배열의 분할을 시작한다.
+      let pivot_index = partition(start, last);
+      // 피벗 왼쪽 하위 배열
+      DFS(start, pivot_index - 1);
+      // 피벗 오른쪽 하위 배열
+      DFS(pivot_index + 1, last);
+    }
+  }
+  DFS(0, arr.length - 1);
+  return arr;
+}
+console.log("solution", solution([0, 5, 2, 1, 6, 3]));
+```
+
 ### 퀵정렬의 효율성
 
 퀵정렬의 효율성을 알아내려면 분할의 과정을 살펴봐야한다.
