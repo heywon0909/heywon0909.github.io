@@ -52,6 +52,8 @@ menu:
     url: /cs/
   - title: Mini
     url: /mini/
+  - title : Study
+    url: /study/  
   - title: Example
     url: /example/
   - title: Documentation

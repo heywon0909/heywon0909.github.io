@@ -57,9 +57,9 @@ hide_last_modified: false
 
 ![200x200](/assets/img/cs/tree.png "트리순회")
 
-#### 전외순회 (preorder traverse)
+#### 전위순회 (preorder traverse)
 
-전외순회는 루트 노드를 탐색한다.
+전위순회는 루트 노드를 탐색한다.
 
 즉, 📌 부모 -> 왼쪽 -> 오른쪽 순으로 이동한다.
 
@@ -81,7 +81,7 @@ function solution(v) {
 solution(7);
 ```
 
-#### 중외순회 (inorder traverse)
+#### 중위순회 (inorder traverse)
 
 왼쪽 하위 트리 탐색 후, 루트 노드, 오른쪽 하위트리로 이동한다.
 
@@ -105,7 +105,7 @@ function solution(v) {
 solution(7);
 ```
 
-#### 후외순회 (level order traverse)
+#### 후위순회 (level order traverse)
 
 왼쪽 하위 트리 탐색 후, 오른쪽 하위 트리 탐색 후 루트 노드로 이동한다.
 즉, 📌 왼쪽 -> 오른쪽 -> 부모 순으로 이동한다.
