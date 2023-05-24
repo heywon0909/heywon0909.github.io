@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Selectsort(삽입정렬)
+title: Insertsort(삽입정렬)
 path:
 description: >
   [2023.05.19 ~ 2023.05.25] 동안 공부한 삽입정렬이다.<br>
@@ -13,7 +13,7 @@ hide_last_modified: false
 <br>
 <br>
 
-## Selectsort
+## Insertsort
 
 정렬되지 않은 배열이 주어졌을 때, 배열을 정렬시킬 수 있는 방법중 하나이다.
 
