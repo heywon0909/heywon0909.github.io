@@ -7,6 +7,8 @@ image:
 sitemap: false
 ---
 
+Redux를 공부해보자🍀
+
 ## topic 🚀
 
 1. Redux 란
