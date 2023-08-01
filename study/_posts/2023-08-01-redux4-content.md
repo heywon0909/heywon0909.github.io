@@ -1,8 +1,8 @@
 ---
 layout: post
-title: typescript 제대로 공부하기
+title: Redux 제대로 공부하기
 description: >
-  typescript 를 SPA 프레임워크에 적용하기위한 공부
+  React에 Redux를 적용하기 위한 공부 
 image:
 sitemap: false
 ---
@@ -14,7 +14,7 @@ redux를 soapple님의 [Redux]강의를 들으면서 정리한 내용이다.
 
 1. immutablitiy
 
-2. 
+2. Redux vs Context API
 
 ### immutablitiy
 
