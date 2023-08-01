@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Redux 제대로 공부하기
+title: Redux 제대로 공부하기 - Redux 용어 정리
 description: >
   React에 Redux를 적용하기 위한 공부 
 image:
