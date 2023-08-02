@@ -28,11 +28,11 @@ redux를 soapple님의 [Redux]강의를 들으면서 정리한 내용이다.
 
 Redux middleware 중 하나인 redux-thunk에 대해 배워보자.
 
-#### Thunk
+#### 📌 Thunk
 
 Thunk란 일부 지연된 작업을 수행하는 코드 조각이라는 의미로, Redux 관점에서 본다면 Side Effect 작업을 수행하는 Redux Store와 상호작용하는 함수이다.
 
-#### Thunk 함수 작성 방법
+#### 📌 Thunk 함수 작성 방법
 
 인자로 Redux Store의 dispatch,getState 함수를 받아서 안에 dispatch와 getState에 접근하여 코드를 짤 수 있다.
 
@@ -61,7 +61,7 @@ function GreetingsComponent(props){
 }
 ```
 
-#### Thunk 사용 패턴
+#### 📌 Thunk 사용 패턴
 
 Thunk는 다른 Action을 Dispatch하거나 Redux Store의 state에 접근할 수 있다.
 
@@ -75,7 +75,7 @@ Thunk는 다른 Action을 Dispatch하거나 Redux Store의 state에 접근할 �
 
 
 
-#### Redux Thunk
+#### 📌 Redux Thunk
 
 Redux Thunk란 Thunk middleware for Redux라는 말처럼 Redux에서 비동기 로직을 사용하기 위한 표준 방법을 정의한 것이다. 
 사실 비동기로직을 컴포넌트 훅에서 useEffect훅안에서 정의해도 되지만, Redux와 middleware를 사용하여 정의하는 이유는 컴포넌트 UI로직과 비동기로직을 분리하기 위해서이다. 이를 통해 코드 재사용성을 높이고 유지보수 할 수 있게 된다.
@@ -85,11 +85,11 @@ Redux Thunk란 Thunk middleware for Redux라는 말처럼 Redux에서 비동기 
 
 Redux middleware 중 하나인 redux-saga에 대해 배워보자.
 
-#### Saga 
+#### 📌 Saga 
 
 Saga란 일련의 사건을 뜻하는 단어로, Side Effect를 활용하여 데이터의 흐름을 관리하는 방법을 말한다.
 
-#### Generator
+#### 📌 Generator
 
 Generator는 es6의 문법으로, 중단없이 반복실행시키는 Iterator를 보완하고자 나왔다.
 Generator는 Iterator의 levelup버전으로, 코드의 실행 흐름을 원하는 대로 제어할 수 있다.
@@ -110,7 +110,7 @@ console.log('english',english); // {value:'English',done:false}
 
 ```
 
-#### redux-saga
+#### 📌 redux-saga
 
 redux-saga는 직관적인 Redux Side-Effect manager이다.
 
@@ -150,14 +150,14 @@ Redux Store state에서 selector에 해당하는 아이들을 선택하는 effec
 Action을 Dispatch하기위해 Dispatch대신 put을 사용한다.
 
 
-#### redux-saga 사용법
+#### 📌 redux-saga 사용법
 
 1. 각각의 Action 분류에 대해 각각 saga 파일을 만든다.
 2. saga들을 all()함수에 하나로 묶어주는 rootSaga를 생성후 Redux Store에 middleware 연동해준다.
 3. sagaMiddleware의 run을 실행하여 rootSaga를 실행시켜준다.
 
 
-### Thunk vs Saga
+### Thunk vs Saga 👩‍🎤
 둘다 Redux middleware로 SideEffect를 사용할 수 있게 해주는 역할을한다.
 
 |비교|Thunk|Saga|
