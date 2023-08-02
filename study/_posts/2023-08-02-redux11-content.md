@@ -123,27 +123,27 @@ Effect Creator를 통해 Effect를 만든다.
 import {take,takeEvery,takeLatest,takeLeading,put,call,select} from 'redux-saga/effects'
 
 ```
-- take(pattern)
+- take(pattern) <br>
 effect를 생성한다. 인자로 들어가는 pattern이란 실행시킬 action을 정하는 규칙이라고 생각하면된다. 규칙을 만족하는 아이들만 effect를 생성하는 것이다.
 
-- takeEvery(pattern,saga,...args)
+- takeEvery(pattern,saga,...args)  <br>
 Redux Store에 Dispatch된 Action들중에 pattern에 맞는 Action만 saga를 생성한다.
 
-- takeLatest(pattern,saga,...args)
+- takeLatest(pattern,saga,...args)  <br>
 Redux Store에 Dispatch된 Action들중에 pattern에 맞는 Action만 saga를 생성한다. 
 단, 최근의 Action들을 수행한다.하지만 이전에 실행중인 saga가 있으면 자동으로 취소된다.
 
-- takeEvery(pattern,saga,...args)
+- takeEvery(pattern,saga,...args)  <br>
 Redux Store에 Dispatch된 Action들중에 pattern에 맞는 Action만 saga를 생성한다.
 단, 생성된 saga가 끝날때까지 새로 생성되는 saga는 차단한다.
 
-- put(action)
+- put(action)  <br>
 Dispatch와 유사하다. Action객체를 파라미터로 받아서 Effect를 생성하고 saga에 집어넣는다.
 
-- call(fn,...args)
+- call(fn,...args)  <br>
 fn함수를 호출한다.
 
--select(selector,...args)
+-select(selector,...args)  <br>
 Redux Store state에서 selector에 해당하는 아이들을 선택하는 effect 생성한다.
 
 2. Dispatching Actions
