@@ -56,5 +56,7 @@ handbook을 읽고, what's new에서 typescript 버전 처음부터 오름차순
 
 1. 타입스크립트 공식문서 읽기
    https://www.typescriptlang.org/ko/docs/handbook/2/basic-types.html
-2. 제로초 강의 듣고 블로그 정리하기(약 2주 동안 들을 예정)
+2. 제로초 ts-all-in-one 문서 읽기
+   https://github.com/heywon0909/ts-all-in-one
+
 3. 프로젝트 적용
