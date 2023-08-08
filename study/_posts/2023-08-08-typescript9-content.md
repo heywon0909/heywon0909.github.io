@@ -1,6 +1,6 @@
 ---
 layout: post
-title: typescript 제대로 공부하기 - lib.es5.d.ts분석
+title: typescript 제대로 공부하기 - Utility Types
 description: >
   typescript 를 SPA 프레임워크에 적용하기위한 공부
 image:
