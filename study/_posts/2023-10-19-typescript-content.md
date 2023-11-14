@@ -13,7 +13,7 @@ sitemap: false
 
 **타입스크립트 뽀개기 🙌**
 
-[1장, 타입스크립트 시작하기](https://www.notion.so/1-e0bcffdac97e4335abd1db1205526946?pvs=21)
+[1장, 타입스크립트 시작하기](https://heywon0909.github.io/study/2023-10-19-typescript1-content/)
 
 [2장, 기본 문법 익히기](https://www.notion.so/2-82418087a8214d63bfb6c5d227e5461a?pvs=21)
 
