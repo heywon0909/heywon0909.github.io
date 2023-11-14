@@ -13,4 +13,20 @@ sitemap: false
 
 **타입스크립트 뽀개기 🙌**
 
-[타입스크립트 교과서](https://www.notion.so/4d4e96937c3f4ebe87050f6ddf51c955?pvs=21)
+[1장, 타입스크립트 시작하기](https://www.notion.so/1-e0bcffdac97e4335abd1db1205526946?pvs=21)
+
+[2장, 기본 문법 익히기](https://www.notion.so/2-82418087a8214d63bfb6c5d227e5461a?pvs=21)
+
+[3장, lib.es5.d.ts 분석하기](https://www.notion.so/3-lib-es5-d-ts-4054bc3bc37f4a5db8b5855ea6ca272b?pvs=21)
+
+[4장, 타입스크립트 프로젝트 설정하기](https://www.notion.so/4-4a0a8783f1334928947726405262a865?pvs=21)
+
+[5장, jQuery 타입 분석하기](https://www.notion.so/5-jQuery-ee0d1104b57e4fe8bcb1db2b2d3b8e11?pvs=21)
+
+[6장, Axios 타입 분석하기](https://www.notion.so/6-Axios-45b5e74a622e49edb3152e85484c17e1?pvs=21)
+
+[7장, React 타입 분석하기](https://www.notion.so/7-React-ae3203519e424897915ad804bc626ee8?pvs=21)
+
+[8장, Node.js 타입 분석하기](https://www.notion.so/8-Node-js-c22a7b397e674a9a94c6a4476d4b2e6a?pvs=21)
+
+[9장, Express 타입 분석하기](https://www.notion.so/9-Express-f7b3df34bb4a4af689966314a98af75e?pvs=21)
