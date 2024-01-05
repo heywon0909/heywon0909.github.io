@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 모던 리액트 Deep Dive 1장
+title: 모던 리액트 Deep Dive 1장 - part 1.
 description: >
   React에 Redux를 적용하기 위한 공부
 image:
