@@ -34,15 +34,18 @@ sitemap: false
 
 1. render
 
-- 컴포넌트를 실행해 이전 가상DOM과 비교해 바뀔 필요 있는 부분 파악(type,props,key)
+
+    - 컴포넌트를 실행해 이전 가상DOM과 비교해 바뀔 필요 있는 부분 파악(type,props,key)
 
 2. Fiber reconciler
 
-- 변경 사항을 가상DOM에 반영한 뒤 렌더링 요청
+
+    - 변경 사항을 가상DOM에 반영한 뒤 렌더링 요청
 
 3. commit
 
-- 바뀐 부분 실제 DOM 에 적용
+
+    - 바뀐 부분 실제 DOM 에 적용
 
 4. update
 
@@ -57,6 +60,19 @@ React Element가 업데이트 될 때, 실제 브라우저 DOM에 바로 반영�
 가상 DOM을 사용함으로써, 개발자는 사용자의 인터렉션에 따른 DOM의 변경사항을 수동으로 추적하지 않아도 되며, 여러번 발생하는 렌더링 과정을 줄일 수 있게 된다.
 
 > DOM: Document Object Model로 브라우저가 웹페이지의 콘텐츠와 구조를 어떻게 보여줄지에 대한 정보를 담고 있음
+
+#### 리액트 파이버 트리
+
+가상 DOM은 current 파이버 트리, workInProgress 트리 총 2개로 만들어진다.
+
+파이버 트리는 React fiber로 구성된 트리를 말하며,
+파이버 트리는 current 파이버 트리, workInProgress 트리 총 2개 존재한다.
+React Fiber의 작업이 끝나면 리액트는 workInProgress 트리를 현재 트리로 바꿔치기한다.(더블 버퍼링)<br/>
+보이지 않는 곳에서 작업을 마무리 한 다음, 완성되면 새로운 그림으로 갈아끼우는 것이다.
+<br/><br/>
+업데이트가 발생하면, 앞서 만든 current 트리가 존재하는 상황에서, workInProgress트리를 다시 빌드한다. 이때 같은 React Fiber를 활용하여 변경 작업을 처리한다.<br/> 기존 Fiber를 재활용해 내부 속성값만 변경하여 트리를 업데이트한다.
+<br/><br/>
+이를 기반으로 실제 DOM과 비교하여 실제 DOM에 필요한 변경사항을 최소한으로 적용한다.
 
 #### React Fiber
 
@@ -90,16 +106,6 @@ Fiber reconciler는 VDOM과 실제DOM을 비교해 변경된 부분을 파악하
 이러한 React Fiber가 모여 가상DOM 형성한다.
 
 > 가상DOM은 React Fiber(자바스크립트 객체)로 관리된다. 리액트 개발 팀은 리액트는 가상DOM이 아닌 Value UI, 즉 값을 가지고 있는 UI를 관리하는 라이브러리라는 내용을 피력한 바 있다. 즉, 핵심 원칙은 UI를 문자열, 숫자, 배열과 같은 값으로 관리한다는 것이다.
-
-#### 리액트 파이버 트리
-
-파이버 트리는 current 파이버 트리, workInProgress 트리 총 2개 존재한다.
-React Fiber의 작업이 끝나면 리액트는 workInProgress 트리를 현재 트리로 바꿔치기한다.(더블 버퍼링)<br/>
-보이지 않는 곳에서 작업을 마무리 한 다음, 완성되면 새로운 그림으로 갈아끼우는 것이다.
-<br/><br/>
-업데이트가 발생하면, 앞서 만든 current 트리가 존재하는 상황에서, workInProgress트리를 다시 빌드한다. 이때 같은 React Fiber를 활용하여 변경 작업을 처리한다.<br/> 기존 Fiber를 재활용해 내부 속성값만 변경하여 트리를 업데이트한다.
-<br/><br/>
-이를 기반으로 실제 DOM과 비교하여 실제 DOM에 필요한 변경사항을 최소한으로 적용한다.
 
 #### 동시성 렌더링
 
